@@ -1,5 +1,5 @@
 import Project1 from "../../assets/project1.jpg";
-import Project2 from "../../assets/project2.webp";
+import Project2 from "../../assets/project2.jpg";
 
 
 export const projectsData = [

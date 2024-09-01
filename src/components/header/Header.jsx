@@ -1,64 +1,81 @@
-import React, {useState} from "react";
-import './header.css';
-import { HiOutlineHome, HiOutlineUser, HiOutlineBadgeCheck, HiOutlinePhotograph, HiOutlineMail, HiX, HiOutlineMenu } from "react-icons/hi";
-
+import React, { useState, useEffect } from "react";
+import "./header.css";
+import {
+  HiOutlineHome,
+  HiOutlineUser,
+  HiOutlineBadgeCheck,
+  HiOutlinePhotograph,
+  HiOutlineMail,
+  HiX,
+  HiOutlineMenu,
+} from "react-icons/hi";
 
 const Header = () => {
-    window.addEventListener("scroll", function () {
-        const header = document.querySelector(".header");
-        if(this.scrollY >= 80) header.classList.add("scroll-header");
-        else header.classList.remove("scroll-header");
-    });
-   
-    const[Toggle, showMenu] = useState(false);
-    const[activeNav, setActiveNav] = useState("#home");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState("#home");
 
-    return(
-        <header className="header">
-            <nav className="nav container">
-                <a href="index.html" className="nav__logo">Vignesh Shankaran</a>
-                <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
-                    <ul className="nav__list grid">
-                        <li className="nav__item">
-                            <a href="#home" onClick={() => setActiveNav("#home")} 
-                            className={activeNav === "#home" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlineHome className="nav__icon"/>Home
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a href="#about" onClick={() => setActiveNav("#about")} 
-                            className={activeNav === "#about" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlineUser className="nav__icon"/>About
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a href="#skills" onClick={() => setActiveNav("#skills")} 
-                            className={activeNav === "#skills" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlineBadgeCheck className="nav__icon"/>Skills
-                            </a>
-                        </li>
-                       
-                        <li className="nav__item">
-                            <a href="#portfolio" onClick={() => setActiveNav("#portfolio")} 
-                            className={activeNav === "#portfolio" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlinePhotograph className="nav__icon"/>Projects
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a href="#contact" onClick={() => setActiveNav("#contact")} 
-                            className={activeNav === "#contact" ? "nav__link active-link" : "nav__link"}>
-                                <HiOutlineMail className="nav__icon"/>Contact
-                            </a>
-                        </li>
-                    </ul>
-                    <HiX className="nav__close" onClick={() => showMenu(!Toggle)} />
-                </div>
-                <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
-                    <HiOutlineMenu />
-                </div>
-            </nav>
-        </header>
-    )
-}
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector(".header");
+      if (window.scrollY >= 80) header.classList.add("scroll-header");
+      else header.classList.remove("scroll-header");
+    };
 
-export default Header
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleMenuToggle = () => setMenuOpen(!menuOpen);
+  const handleLinkClick = (hash) => {
+    setActiveNav(hash);
+    setMenuOpen(false); // Close the menu on link click
+  };
+
+  return (
+    <header className="header">
+      <nav className="nav container">
+        <a href="#home" className="nav__logo">
+          Vignesh Shankaran
+        </a>
+        <div className={menuOpen ? "nav__menu show-menu" : "nav__menu"}>
+          <ul className="nav__list grid">
+            {[
+              { href: "#home", label: "Home", icon: HiOutlineHome },
+              { href: "#about", label: "About", icon: HiOutlineUser },
+              { href: "#skills", label: "Skills", icon: HiOutlineBadgeCheck },
+              { href: "#portfolio", label: "Projects", icon: HiOutlinePhotograph },
+              { href: "#contact", label: "Contact", icon: HiOutlineMail },
+            ].map(({ href, label, icon: Icon }) => (
+              <li className="nav__item" key={href}>
+                <a
+                  href={href}
+                  onClick={() => handleLinkClick(href)}
+                  className={`nav__link ${activeNav === href ? "active-link" : ""}`}
+                >
+                  <Icon className="nav__icon" />
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button
+            className="nav__close"
+            onClick={handleMenuToggle}
+            aria-label="Close menu"
+          >
+            <HiX />
+          </button>
+        </div>
+        <button
+          className="nav__toggle"
+          onClick={handleMenuToggle}
+          aria-label="Open menu"
+        >
+          <HiOutlineMenu />
+        </button>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;

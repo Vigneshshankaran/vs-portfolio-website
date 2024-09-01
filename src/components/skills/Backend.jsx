@@ -1,57 +1,22 @@
 import React from "react";
-import { HiCheckBadge } from "react-icons/hi2";
+import SkillsGroup from "./SkillsGroup";
+
+const backendSkills = [
+  { name: "Node.js", level: "Intermediate" },
+  { name: "Express.js", level: "Intermediate" },
+  { name: "MongoDB", level: "Intermediate" },
+  { name: "Postman", level: "Intermediate" },
+  { name: "npm", level: "Intermediate" },
+  { name: "Git", level: "Intermediate" },
+];
 
 const Backend = () => {
   return (
     <div className="skills__content">
       <h3 className="skills__title">Backend Developer</h3>
       <div className="skills__box">
-        <div className="skills__group">
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">Node.js</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">Express.js</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">MongoDB</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-        </div>
-        <div className="skills__group">
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">Postman</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">npm</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-          <div className="skills__data">
-            <HiCheckBadge />
-            <div>
-              <h3 className="skills__name">Git</h3>
-              <span className="skills__level">Intermediate</span>
-            </div>
-          </div>
-        </div>
+        <SkillsGroup skills={backendSkills.slice(0, 3)} />
+        <SkillsGroup skills={backendSkills.slice(3)} />
       </div>
     </div>
   );

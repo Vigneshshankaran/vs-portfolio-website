@@ -8,6 +8,8 @@ export const projectsData = [
         image: Project1,
         title: "Production Tracking App",
         category: "FullStack",
+        repoLink: "https://github.com/Vigneshshankaran/Production-Tracking-App",
+        liveLink: "https://seasonsweetbox.com/login"
     },
     {
         id: 2,

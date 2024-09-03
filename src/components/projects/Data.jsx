@@ -16,6 +16,8 @@ export const projectsData = [
         image: Project2,
         title: "Food Delivery App",
         category: "FullStack",
+        repoLink: "https://github.com/Vigneshshankaran/food-delivery-app",
+        liveLink: "https://devapizzashop.netlify.app/"
     },
 ];
 

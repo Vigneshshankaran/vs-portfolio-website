@@ -1,4 +1,4 @@
-# [Vignesh Shankaran]'s Portfolio
+# Vignesh Shankaran's Portfolio
 
 Welcome to my portfolio! Here, you will find a collection of my projects showcasing my skills and web development experience, particularly in the MERN stack. Each project includes a brief description, key features, and a live demo or repository link.
 

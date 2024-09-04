@@ -20,4 +20,4 @@ I am Vignesh Shankaran, a passionate MERN stack developer with a strong foundati
 Feel free to reach out if you want to collaborate or have any questions!
 
 - **Email:** [vigneshganesha@gmail.com]
-- **LinkedIn:** [[Your LinkedIn Profile](https://www.linkedin.com/in/vignesh-shankaran-75695941/)]
+- **LinkedIn:** [(https://www.linkedin.com/in/vignesh-shankaran-75695941/)]
